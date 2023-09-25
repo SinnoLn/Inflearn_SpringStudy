@@ -1,0 +1,37 @@
+package hello.core.order;
+
+import hello.core.discount.DiscountPolicy;
+import hello.core.member.Member;
+import hello.core.member.MemberRepository;
+
+
+//이 클라이언트는 DiscountPolicy 인터페이스 뿐만 아니라 RateDiscountPolicy란 구현객체에도 의존하고 있다. - DIP위반
+//FixDiscountPolicy를 RateDiscountPolicy로 바꾸는 순간 OrderServiceImpl의 소스코드도 함께 교체해 줘야 한다 - OCP위반
+public class OrderServiceImpl implements OrderService{
+
+    //이 문제를 해결하기 위해서는 누군가 클라이언트 OrderServiceImpl에 DiscountPolicy의 구현객체를 대신 생성하고 대입해 주어야 한다.
+
+    private final DiscountPolicy discountPolicy; //final을 사용하면 위처럼 값이 할당되어야 하므로 선언만 해줌
+    private final MemberRepository memberRepository;
+
+    public OrderServiceImpl( MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+        this.discountPolicy = discountPolicy;
+        this.memberRepository = memberRepository;
+    }
+
+    @Override
+    public Order createOrder(Long memberId, String itemName, int itemPrice) {
+        //단일체계의 원칙이 잘 지켜진 사례
+        //가격정책을 바꾸는것과 데이터를 저장하는 부분등 가변적 요소가 있는 각 기능이 완전히 독립됨.
+        Member member = memberRepository.findById(memberId); //memberId를 통해 멤버 이름 가져옴
+        int discountPrice = discountPolicy.discount(member,itemPrice);
+
+        return new Order(memberId,itemName,itemPrice,discountPrice);
+        //왜 자꾸 오류나나 했는데 생성자를 안만듬.... 미친......
+    }
+
+    ///테스트 용도
+    public MemberRepository getMemberRepository(){
+        return memberRepository;
+    }
+}
