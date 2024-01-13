@@ -50,6 +50,7 @@ public class ApplicationContextExtendsFindTest {
         }
     }
 
+    //최상위 클래스인 'object'를 사용하여 컨테이너의 모든 빈을 조회 (모든 빈의 타입이 Object의 하위타입이지 때문)
     @Test
     @DisplayName("부모 타입으로 모두 조회하기 - Objebt")
     void findAllBeanByObjectType() {
@@ -62,6 +63,7 @@ public class ApplicationContextExtendsFindTest {
 
 
 
+    //DiscountPolicy 인터페이스의 구현체
     @Configuration
     static class TestConfig {
         @Bean

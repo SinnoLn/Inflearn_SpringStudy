@@ -5,11 +5,12 @@ import org.springframework.stereotype.Component;
 import java.util.HashMap;
 import java.util.Map;
 
-@Component
+  @Component //memoryMemberRepository
 public class MemoryMemberRepository implements MemberRepository {
     //interface에서 추상메소드를 가져왔으므로 당연히 오버라이드 해줘야 한다.
     private static Map<Long, Member> store = new HashMap<>();
 
+    //HashMap()에서 put과 get은 map에 존재하는 함수
     @Override
     public void save(Member member) {
         store.put(member.getId(), member); //id와 이름이 매칭돼야 하므로 MAP 사용, 저장

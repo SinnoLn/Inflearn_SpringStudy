@@ -38,7 +38,7 @@ public class SingletonTest {
             SingletonService singletonService1 = SingletonService.getInstance();
             SingletonService singletonService2 = SingletonService.getInstance();
 
-            //print 해보면 singletonService1과 singletonService2가 같은 객채라는 것을 확인할 수 있다.
+            //print 해보면 singletonService1과 singletonService2가 같은 객체라는 것을 확인할 수 있다.
             System.out.println("singletonService1 = " + singletonService1);
             System.out.println("singletonService2 = " + singletonService2);
 

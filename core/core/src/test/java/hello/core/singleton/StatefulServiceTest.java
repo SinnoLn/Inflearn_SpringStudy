@@ -27,9 +27,13 @@ class StatefulServiceTest {
 //        int price = statefulService1.getPrice();
 //        System.out.println("price = " + price);
         //BUT, 2만원이 나와버림
-        //같은인스턴스를 공유하기 때문에 하나의 데이터만 유지된다. 계속 덮어씌워지는 느낌인듯
+        //같은인스턴스를 공유하기 때문에 하나의 데이터만 유지된다. 계속 덮어 씌워짐
 
 //        assertThat(statefulService1.getPrice()).isEqualTo(20000);
+
+        /*
+        * 즉 스프링빈은 항상 무상태로 설계하자!!!!!!!!!!!!!!!!!!!!!
+        * */
 
         System.out.println("userAPrice = " + userAPrice);
         System.out.println("userBPrice = " + userBPrice);

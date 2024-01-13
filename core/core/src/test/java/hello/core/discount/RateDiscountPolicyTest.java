@@ -9,11 +9,12 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
+//원래는 FixedDiscountPolicyTest 였다가 RateDiscountPolicy로 바뀌어서 따로 testcase를 추가해준걸까...?
 class RateDiscountPolicyTest {
     DiscountPolicy discountPolicy = new RateDiscountPolicy();
 
     @Test
-    @DisplayName("VIP는 10%할인이 적용 되어야 한다.")
+    @DisplayName("VIP는 10%할인이 적용 되어야 한다.") //(Fixed -> Rate)
     void vip_o(){
         //given
         Member member = new Member(1L, "memberA", Grade.VIP);

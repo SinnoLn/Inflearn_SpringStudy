@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class RateDiscountPolicy implements DiscountPolicy {
 
+    //비용의 10%를 할인해 줌
     private float discountAccount = 0.1f;
     @Override
     public int discount(Member member, int price) {
