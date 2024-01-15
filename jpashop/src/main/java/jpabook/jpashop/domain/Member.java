@@ -11,8 +11,8 @@ import java.util.ArrayList;
 @Getter @Setter
 public class Member {
 
-    @Column(name = "member_id")
     @Id @GeneratedValue
+    @Column(name = "member_id")
     private Long id;
 
     private String name;

@@ -1,0 +1,21 @@
+spring:
+#  datasource:
+#    url: jdbc:h2:mem:test
+#    username: sa
+#    password:
+#    driver-class-name: org.h2.Driver
+
+#  springboot는 create-drop로 기본적으로 돌아감
+#  create-drop은 application 종료 시점에 drop query를 전부 날려중
+#  jpa:
+#    hibernate:
+#      ddl-auto: create-drop
+#    properties:
+#      hibernate:
+#       dialect: org.hibernate.dialect.H2Dialect  # Hibernate Dialect 설정 추가
+#       show_sql: true
+#        format_sql: true
+
+logging.level:
+    org.hibernate.SQL: debug
+    org.hibernate.orm.jdbc.bind: trace
