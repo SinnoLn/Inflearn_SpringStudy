@@ -38,7 +38,7 @@ public class AppConfig {
     @Bean
     public OrderService orderService(){
         System.out.println("call AppConfig.orderService");
-        return new OrderServiceImpl( memberRepository(),discountPolicy());
+        return new OrderServiceImpl( discountPolicy(),memberRepository());
     }
     //memberservice와 orderervice에서 memberRepository가 총 두번 호출
     //그럼 singleton이 깨지는것 아닌가?

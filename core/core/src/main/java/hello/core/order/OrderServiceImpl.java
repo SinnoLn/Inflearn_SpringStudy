@@ -3,6 +3,7 @@ package hello.core.order;
 import hello.core.discount.DiscountPolicy;
 import hello.core.member.Member;
 import hello.core.member.MemberRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Component;
 //이 클라이언트는 DiscountPolicy 인터페이스 뿐만 아니라 (비율로 할인)RateDiscountPolicy란 구현객체에도 의존하고 있다. - DIP위반
 //FixDiscountPolicy를 RateDiscountPolicy로 바꾸는 순간 OrderServiceImpl의 소스코드도 함께 교체해 줘야 한다 - OCP위반
 @Component
+@RequiredArgsConstructor //Lombok의 Annotation (필수값인 final이 붙은것을 가지고 생성자를 만들어줌) (이걸 많이 사용함!!!!)
 public class OrderServiceImpl implements OrderService{
 
     //이 문제를 해결하기 위해서는 누군가 클라이언트 OrderServiceImpl에 DiscountPolicy의 구현객체를 대신 생성하고 대입해 주어야 한다.
@@ -19,6 +21,7 @@ public class OrderServiceImpl implements OrderService{
     //인터페이스에만 의존하도록 코드를 변경해 주어야 한다.
     private final DiscountPolicy discountPolicy; //final을 사용하면 위처럼 값이 할당되어야 하므로 선언만 해줌
     private final MemberRepository memberRepository;
+    //@RequiredArgsConstructor 를 사용하면 나중에 final을 추가할 때 굉장히 편리하다
 
 //    @Autowired private MemberRepository memberRepository;
 //    @Autowired private DiscountPolicy discountPolicy;

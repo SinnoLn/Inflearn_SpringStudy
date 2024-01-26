@@ -16,7 +16,7 @@ public class OrderServiceImplTest {
         MemoryMemberRepository memberRepository = new MemoryMemberRepository();
         memberRepository.save(new Member(1L, "jiny", Grade.VIP));
 
-        OrderServiceImpl orderService = new OrderServiceImpl(new MemoryMemberRepository(), new FixDiscountPolicy());
+        OrderServiceImpl orderService = new OrderServiceImpl( new FixDiscountPolicy(),new MemoryMemberRepository());
         Order order = orderService.createOrder(1L, "itemA", 30000);
         Assertions.assertThat(order.getDiscountPrice()).isEqualTo(1000);
     }
