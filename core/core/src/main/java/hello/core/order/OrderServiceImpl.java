@@ -1,5 +1,6 @@
 package hello.core.order;
 
+import hello.core.annotation.MainDiscountPolicy;
 import hello.core.discount.DiscountPolicy;
 import hello.core.member.Member;
 import hello.core.member.MemberRepository;
@@ -41,7 +42,7 @@ public class OrderServiceImpl implements OrderService{
     //생성자
     //MemoryMemberRepository와 FixDiscountPolicy 객체의 의존관계가 주입됨.
     @Autowired //생성자가 1개만 있다면 생략해도 된다.
-    public OrderServiceImpl( MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+    public OrderServiceImpl( MemberRepository memberRepository, @MainDiscountPolicy DiscountPolicy discountPolicy) {
         System.out.println("1. OrderServiceImpl.OrderServiceImpl"); //soutm
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
