@@ -13,7 +13,8 @@ public class PrototypeTest {
 
     @Test
     void prototypeBeanFind() {
-        AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(PrototypeTest.PrototypeBean.class);
+        AnnotationConfigApplicationContext ac = new
+                AnnotationConfigApplicationContext(PrototypeBean.class);
         System.out.println("find prototypeBean1");
         PrototypeBean prototypeBean1 = ac.getBean(PrototypeBean.class);
         System.out.println("find prototypeBean2");
